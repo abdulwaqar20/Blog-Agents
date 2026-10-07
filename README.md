@@ -1,6 +1,6 @@
 # Blog Agents: Multi-Agent Workflow with LangGraph
 
-A planner, worker and reviewer agent that write a blog post together. The reviewer can send the draft back to the worker for fixes, up to 2 times.
+A planner, worker and reviewer agent that write a blog post together. The reviewer can send the draft back to the worker for fixes, up to 2 times. Includes a live FastAPI dashboard.
 
 ## Graph
 
@@ -31,11 +31,21 @@ python main.py
 
 Test the rejection path: `STRICT_REVIEWER=1 python main.py`
 
+## Dashboard
+
+```bash
+uvicorn dashboard:api --reload
+```
+
+Open http://localhost:8000. It streams each node live and shows the outline, draft, reviewer feedback, retry count, final status and the graph.
+
 ## Structure
 
 ```
 main.py
+dashboard.py
 draw_graph.py
-src/  (state.py, nodes.py, router.py, graph.py)
-docs/ (graph.png, failure_note.md)
+src/    (state.py, nodes.py, router.py, graph.py)
+static/ (index.html, style.css, script.js)
+docs/   (graph.png, failure_note.md)
 ```

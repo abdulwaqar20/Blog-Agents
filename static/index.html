@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog Agents Dashboard</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <header class="hero">
+    <h1>Blog Agents</h1>
+    <p>Planner → Worker → Reviewer, live</p>
+  </header>
+
+  <main>
+    <section class="bar">
+      <input id="topic" value="Artificial Intelligence in Education" placeholder="Enter a blog topic">
+      <button id="runBtn" onclick="run()">Run</button>
+    </section>
+
+    <section class="pipeline">
+      <div class="node" id="node-planner"><span class="icon">🧠</span><b>Planner</b><small>Outline</small></div>
+      <div class="arrow">→</div>
+      <div class="node" id="node-worker"><span class="icon">✍️</span><b>Worker</b><small>Draft</small></div>
+      <div class="arrow">→</div>
+      <div class="node" id="node-reviewer"><span class="icon">🔍</span><b>Reviewer</b><small>Check</small></div>
+    </section>
+
+    <section class="stats">
+      <div class="stat"><small>Status</small><b id="status" class="pill idle">Idle</b></div>
+      <div class="stat"><small>Retries</small><b id="retries">0 / 2</b></div>
+      <div class="stat"><small>Draft words</small><b id="words">0</b></div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Reviewer feedback</h3>
+        <div id="feedback" class="body muted">Waiting for a run...</div>
+      </div>
+      <div class="card">
+        <h3>Activity log</h3>
+        <div id="log" class="body"></div>
+      </div>
+      <div class="card wide">
+        <div class="tabs">
+          <button class="tab active" data-tab="draft">Draft</button>
+          <button class="tab" data-tab="outline">Outline</button>
+          <button class="tab" data-tab="graph">Graph</button>
+        </div>
+        <div id="draft" class="body md pane"></div>
+        <div id="outline" class="body md pane hidden"></div>
+        <div id="graph" class="body pane hidden"><img src="/assets/graph.png" alt="graph"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
